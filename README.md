@@ -41,7 +41,7 @@ CampusBite/
 cp Backend/.env.example Backend/.env
 # generate a secret and paste it as JWT_SECRET in Backend/.env
 python -c "import secrets; print(secrets.token_hex(32))"
-# (optional) put your OpenAI key in OPENAI_API_KEY to enable AI insights
+
 
 docker compose up --build
 ```
