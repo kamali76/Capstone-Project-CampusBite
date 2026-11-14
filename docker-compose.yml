@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+    container_name: campusbite-backend
+    env_file:
+      - ./Backend/.env
+    environment:
+      # Path inside the container; the volume below keeps the data between restarts
+      DATABASE_URL: sqlite:////app/data/campusbite.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - campusbite_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  campusbite_data:
