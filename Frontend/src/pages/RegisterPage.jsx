@@ -60,6 +60,12 @@ export default function RegisterPage() {
   };
 
   return (
+    <div className="auth-page">
+      <div className="auth-emojis" aria-hidden="true">
+        {["🍕", "🍜", "☕", "🍔", "🥞", "🍰", "🍛", "🥤"].map((e, i) => (
+          <span key={i} className={`float float-${i + 1}`}>{e}</span>
+        ))}
+      </div>
     <div className="auth-card">
       <h2>Create your account</h2>
       <ErrorMessage message={error} />
@@ -116,6 +122,7 @@ export default function RegisterPage() {
       <p>
         Already have an account? <Link to="/login">Log in</Link>
       </p>
+    </div>
     </div>
   );
 }

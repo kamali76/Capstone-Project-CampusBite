@@ -36,8 +36,15 @@ export default function LoginPage() {
   };
 
   return (
+    <div className="auth-page">
+      <div className="auth-emojis" aria-hidden="true">
+        {["🍕", "🍜", "☕", "🍔", "🥞", "🍰", "🍛", "🥤"].map((e, i) => (
+          <span key={i} className={`float float-${i + 1}`}>{e}</span>
+        ))}
+      </div>
     <div className="auth-card">
       <h2>Log in to CampusBite</h2>
+      <p className="muted auth-sub">Order food, manage your restaurant, or deliver orders.</p>
       {justRegistered && <SuccessMessage message="Account created! Please log in." />}
       <ErrorMessage message={error} />
       <form onSubmit={handleSubmit}>
@@ -72,6 +79,7 @@ export default function LoginPage() {
       <p>
         New here? <Link to="/register">Create an account</Link>
       </p>
+    </div>
     </div>
   );
 }

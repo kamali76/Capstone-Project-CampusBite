@@ -31,7 +31,9 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <span className="navbar-brand">CampusBite</span>
+      <span className="navbar-brand">
+        <span className="brand-mark" aria-hidden="true">🍴</span>CampusBite
+      </span>
       <div className="navbar-links">
         {links.map((link) => (
           <NavLink
@@ -40,7 +42,7 @@ export default function Navbar() {
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
           >
             {link.label}
-            {link.isCart && totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+            {link.isCart && totalItems > 0 && <span key={totalItems} className="cart-count">{totalItems}</span>}
           </NavLink>
         ))}
       </div>

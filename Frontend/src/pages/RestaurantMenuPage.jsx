@@ -7,6 +7,7 @@ import { getRestaurant, getMenu } from "../api/restaurants";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import MenuItemCard from "../components/MenuItemCard";
+import { cuisineLook } from "../utils/foodEmoji";
 
 export default function RestaurantMenuPage() {
   const { id } = useParams();
@@ -75,13 +76,20 @@ export default function RestaurantMenuPage() {
 
   return (
     <div>
-      <Link to="/restaurants">← Back to restaurants</Link>
-      <h2>{restaurant.name}</h2>
-      <p className="muted">
-        {[restaurant.cuisine, restaurant.address && `📍 ${restaurant.address}`, restaurant.rating && `⭐ ${restaurant.rating}`]
-          .filter(Boolean)
-          .join(" · ")}
-      </p>
+      <Link to="/restaurants" className="back-link">← Back to restaurants</Link>
+      <header className={`menu-banner cover-${cuisineLook(restaurant.cuisine, restaurant.id).tone}`}>
+        <span className="menu-banner-emoji" aria-hidden="true">
+          {cuisineLook(restaurant.cuisine, restaurant.id).emoji}
+        </span>
+        <div>
+          <h2>{restaurant.name}</h2>
+          <p>
+            {[restaurant.cuisine, restaurant.address && `📍 ${restaurant.address}`, restaurant.rating && `⭐ ${restaurant.rating}`]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        </div>
+      </header>
 
       {cartHere > 0 && (
         <p className="cart-banner">
